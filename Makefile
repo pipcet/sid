@@ -25,7 +25,7 @@ build/%:
 .PHONY: %}
 
 $(BUILD)/debian/debootstrap/stage1.tar: | $(BUILD)/debian/debootstrap/
-	sudo debootstrap --foreign --arch=arm64 --include=build-essential,git,linux-image-cloud-arm64,bash,kmod,dash,wget,busybox,busybox-static,net-tools,libpam-systemd,file,xsltproc,mtools,openssl,mokutil,libx11-data,libx11-6,sharutils,dpkg-dev sid $(BUILD)/debian/debootstrap/stage1 http://deb.debian.org/debian
+	sudo debootstrap --foreign --arch=arm64 --include=build-essential,git,linux-image-cloud-arm64,bash,kmod,dash,wget,busybox,busybox-static,net-tools,libpam-systemd,file,xsltproc,mtools,openssl,mokutil,libx11-data,libx11-6,sharutils,dpkg-dev,zsh sid $(BUILD)/debian/debootstrap/stage1 http://deb.debian.org/debian
 	(cd $(BUILD)/debian/debootstrap/stage1; sudo tar c .) > $@
 
 $(BUILD)/debian/debootstrap/stage15.tar: $(BUILD)/debian/debootstrap/stage1.tar stage2/init
