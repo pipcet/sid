@@ -50,7 +50,7 @@ $(BUILD)/qemu-kernel: $(BUILD)/debian/debootstrap/stage15.tar
 	(cd $(BUILD)/$(notdir $*).tar.d; find . | cpio -H newc -o) > $@
 
 $(BUILD)/debian/debootstrap/stage2.cpio: $(BUILD)/debian/debootstrap/stage15.tar.cpio $(BUILD)/qemu-kernel
-	dd if=/dev/zero of=tmp bs=1G count=1
+	dd if=/dev/zero of=tmp bs=1G count=2
 	qemu-system-aarch64 -drive if=virtio,index=0,media=disk,driver=raw,file=tmp -machine virt -cpu max -kernel $(BUILD)/qemu-kernel -m 7g -serial stdio -initrd $< -nic user,model=virtio -monitor none -smp 8 -nographic
 	uudecode -o $@ < tmp
 	rm -f tmp
