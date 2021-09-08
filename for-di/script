@@ -4,5 +4,5 @@ apt-get -y update
 apt-get -y dist-upgrade
 apt-get -y build-dep debian-installer anna
 apt-get -y clean
-find -xdev / | cpio -o
+find / -xdev | cpio -o
 exit
