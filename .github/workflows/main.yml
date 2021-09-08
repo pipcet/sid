@@ -30,4 +30,5 @@ jobs:
     - run: sudo apt-get install xz-utils
     - run: sudo apt-get install device-tree-compiler
     - run: sudo apt-get install libtool-bin myrepos
+    - run: sudo apt-get install debootstrap
     - run: make -j13 all
