@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 /debootstrap/debootstrap --second-stage
 /bin/busybox mount -t proc proc proc
 depmod -a
