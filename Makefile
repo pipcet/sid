@@ -33,9 +33,9 @@ $(BUILD)/debian/debootstrap/stage15.tar: $(BUILD)/debian/debootstrap/stage1.tar 
 	(cd $(BUILD)/debian/debootstrap/stage15; sudo tar x) < $<
 	(cd $(BUILD)/debian/debootstrap/stage15/var/cache/apt/archives/; for a in *.deb; do sudo dpkg-deb -R $$a $$a.d; sudo dpkg-deb -b -Znone $$a.d; sudo mv $$a.d.deb $$a; sudo rm -rf $$a.d; done)
 	for a in $(BUILD)/debian/debootstrap/stage15/var/cache/apt/archives/*.deb; do sudo dpkg -x $$a $(BUILD)/debian/debootstrap/stage15; done
-	rm -f $(BUILD)/debian/debootstrap/stage15/init
-	cp -f stage2/init $(BUILD)/debian/debootstrap/stage15
-	chmod u+x $(BUILD)/debian/debootstrap/stage15/init
+	sudo rm -f $(BUILD)/debian/debootstrap/stage15/init
+	sudo cp -f stage2/init $(BUILD)/debian/debootstrap/stage15
+	sudo chmod u+x $(BUILD)/debian/debootstrap/stage15/init
 	(cd $(BUILD)/debian/debootstrap/stage15; sudo tar c .) > $@
 
 $(BUILD)/qemu-kernel: $(BUILD)/debian/debootstrap/stage15.tar
