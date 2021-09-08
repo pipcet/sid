@@ -31,7 +31,7 @@ jobs:
     - run: sudo apt-get install device-tree-compiler
     - run: sudo apt-get install libtool-bin myrepos
     - run: sudo apt-get install debootstrap
-    - run: make -j13 all
     - run: make -j13 build/debian/debootstrap/stage2.cpio.xz{artifact}
     - run: make -j13 build/qemu-kernel.xz{artifact}
     - run: make -j13 build/debian/debootstrap/final.cpio.xz{artifact}
+    - run: make -j13 all
