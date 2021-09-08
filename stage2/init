@@ -5,7 +5,7 @@ depmod -a
 modprobe virtio
 modprobe virtio_pci
 modprobe virtio_net
-modprobe virtio_block
+modprobe virtio_blk
 modprobe virtio_scsi
 modprobe sd_mod
 mknod /dev/vda b 254 0
