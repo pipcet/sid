@@ -57,5 +57,11 @@ $(BUILD)/debian/debootstrap/stage2.cpio: $(BUILD)/debian/debootstrap/stage15.tar
 	uudecode -o $@ < tmp
 	rm -f tmp
 
+$(BUILD)/debian/debootstrap/final.cpio: $(BUILD)/debian/debootstrap/stage2.cpio final/init
+	sudo mkdir -p $(BUILD)/debian/debootstrap/final.d
+	(cd $(BUILD)/debian/debootstrap/final.d; sudo cpio -id) < $<
+	sudo cp final/init $(BUILD)/debian/debootstrap/final.d/init
+	(cd $(BUILD)/debian/debootstrap/final.d; sudo find . | sudo cpio -H newc -o) > $@
+
 %.xz: %
 	xz -9 -e -c --verbose $< > $@
