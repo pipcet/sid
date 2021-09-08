@@ -1,0 +1,8 @@
+#!/bin/zsh
+echo deb-src https://deb.debian.org/debian sid main >> /etc/apt/sources.list
+apt-get -y update
+apt-get -y dist-upgrade
+apt-get -y build-dep debian-installer anna
+apt-get -y clean
+find -xdev / | cpio -o
+exit
