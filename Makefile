@@ -40,7 +40,7 @@ $(BUILD)/debian/debootstrap/stage15.tar: $(BUILD)/debian/debootstrap/stage1.tar 
 
 $(BUILD)/qemu-kernel: $(BUILD)/debian/debootstrap/stage15.tar
 	mkdir -p $(BUILD)/qemu-kernel.d
-	tar -C $(BUILD)/qemu-kernel.d -xvf $<
+	tar -C $(BUILD)/qemu-kernel.d -xf $<
 	$(CP) $(BUILD)/qemu-kernel.d/boot/vmlinuz-* $@
 
 %.tar.cpio: %.tar
