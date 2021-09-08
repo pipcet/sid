@@ -44,10 +44,10 @@ $(BUILD)/qemu-kernel: $(BUILD)/debian/debootstrap/stage15.tar
 	$(CP) $(BUILD)/qemu-kernel.d/boot/vmlinuz-* $@
 
 %.tar.cpio: %.tar
-	sudo mkdir $(BUILD)/$*.tar.d
-	sudo tar -C $(BUILD)/$*.tar.d -xf $<
-	sudo chown -R root.root $(BUILD)/$*.tar.d
-	(cd $(BUILD)/$*.tar.d; find . | cpio -H newc -o) > $@
+	sudo mkdir -p $(BUILD)/$(notdir $*).tar.d
+	sudo tar -C $(BUILD)/$(notdir $*).tar.d -xf $<
+	sudo chown -R root.root $(BUILD)/$(notdir $*).tar.d
+	(cd $(BUILD)/$(notdir $*).tar.d; find . | cpio -H newc -o) > $@
 
 $(BUILD)/debian/debootstrap/stage2.cpio: $(BUILD)/debian/debootstrap/stage15.tar.cpio $(BUILD)/qemu-kernel
 	dd if=/dev/zero of=tmp bs=1G count=1
