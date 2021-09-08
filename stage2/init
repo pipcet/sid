@@ -10,6 +10,6 @@ modprobe virtio_scsi
 modprobe sd_mod
 mknod /dev/vda b 254 0
 apt-get clean
-find -xdev / | cpio -H newc -o | uuencode stage2.cpio > /dev/vda
+find / -xdev | cpio -H newc -o | uuencode stage2.cpio > /dev/vda
 sync
 poweroff -f
