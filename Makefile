@@ -49,7 +49,7 @@ $(BUILD)/qemu-kernel: $(BUILD)/debian/debootstrap/stage15.tar
 	mkdir -p $(BUILD)/qemu-kernel.d
 	sudo tar -C $(BUILD)/qemu-kernel.d -xf $<
 	$(CP) $(BUILD)/qemu-kernel.d/boot/vmlinuz-* $@
-	rm -rf $(BUILD)/qemu-kernel.d
+	sudo rm -rf $(BUILD)/qemu-kernel.d
 
 %.tar.cpio: %.tar
 	sudo rm -rf $(BUILD)/$(notdir $*).tar.d
