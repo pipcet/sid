@@ -44,8 +44,8 @@ $(BUILD)/qemu-kernel: $(BUILD)/debian/debootstrap/stage15.tar
 	$(CP) $(BUILD)/qemu-kernel.d/boot/vmlinuz-* $@
 
 %.tar.cpio: %.tar
-	mkdir $(BUILD)/$*.tar.d
-	tar -C $(BUILD)/$*.tar.d -xf $<
+	sudo mkdir $(BUILD)/$*.tar.d
+	sudo tar -C $(BUILD)/$*.tar.d -xf $<
 	sudo chown -R root.root $(BUILD)/$*.tar.d
 	(cd $(BUILD)/$*.tar.d; find . | cpio -H newc -o) > $@
 
