@@ -9,6 +9,8 @@ BUILD ?= $(PWD)/build
 
 .SECONDEXPANSION:
 
+.SECONDARY: %
+
 define COPY
 	$(MKDIR) -p $(dir $@)
 	$(CP) -a $< $@
