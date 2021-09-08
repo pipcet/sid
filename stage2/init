@@ -1,0 +1,13 @@
+#!/bin/bash
+/debootstrap/debootstrap --second-stage
+/bin/busybox mount -t proc proc proc
+depmod -a
+modprobe virtio
+modprobe virtio_pci
+modprobe virtio_net
+modprobe virtio_block
+modprobe virtio_scsi
+modprobe sd_mod
+mknod /dev/vda b 254 0
+find / | cpio -H newc -o | uuencode stage2.cpio > /dev/vda
+poweroff -f
