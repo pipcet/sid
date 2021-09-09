@@ -80,7 +80,7 @@ $(BUILD)/debian/debootstrap/for-di.cpio: $(BUILD)/debian/debootstrap/final.cpio 
 	sudo $(MKDIR) $(BUILD)/debian/debootstrap/for-di.d
 	sudo cp for-di/script $(BUILD)/debian/debootstrap/for-di.d/vda
 	sudo dd if=/dev/zero of=$(BUILD)/debian/debootstrap/for-di.d/vdb bs=1G count=4
-	qemu-system-aarch64 -drive if=virtio,index=0,media=disk,driver=raw,file=$(BUILD)/debian/debootstrap/for-di.d/vda if=virtio,index=1,media=disk,driver=raw,file=$(BUILD)/debian/debootstrap/for-di.d/vdb -machine virt -cpu max -kernel $(BUILD)/qemu-kernel -m 7g -serial stdio -initrd $< -nic user,model=virtio -monitor none -smp 8 -nographic
+	qemu-system-aarch64 -drive if=virtio,index=0,media=disk,driver=raw,file=$(BUILD)/debian/debootstrap/for-di.d/vda -drive if=virtio,index=1,media=disk,driver=raw,file=$(BUILD)/debian/debootstrap/for-di.d/vdb -machine virt -cpu max -kernel $(BUILD)/qemu-kernel -m 7g -serial stdio -initrd $< -nic user,model=virtio -monitor none -smp 8 -nographic
 	uudecode -o $@ < $(BUILD)/debian/debootstrap/for-di.d/vdb
 	sudo rm -rf $(BUILD)/debian/debootstrap/for-di.d
 
