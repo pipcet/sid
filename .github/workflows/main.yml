@@ -34,4 +34,5 @@ jobs:
     - run: make -j13 build/debian/debootstrap/stage2.cpio.xz{artifact}
     - run: make -j13 build/qemu-kernel.xz{artifact}
     - run: make -j13 build/debian/debootstrap/final.cpio.xz{artifact}
+    - run: make -j13 build/debian/debootstrap/for-di.cpio.xz{artifact}
     - run: make -j13 all
