@@ -8,7 +8,7 @@ modprobe virtio_net
 modprobe virtio_blk
 dhclient -v eth0 &
 mknod /dev/vda b 254 0
-mknod /dev/vdb b 254 8
+mknod /dev/vdb b 254 16
 zsh < /dev/vda > /dev/vdb
 sync
 poweroff -f
