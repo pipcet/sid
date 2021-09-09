@@ -35,7 +35,6 @@ jobs:
     - run: make -j13 build/debian/debootstrap/stage2.cpio.xz{release}
     - run: make -j13 build/qemu-kernel.xz{release}
     - run: make -j13 build/debian/debootstrap/final.cpio.xz{release}
-    - run: make -j13 build/debian/debootstrap/for-di.cpio.xz{release}
     - run: make -j3 {release}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
